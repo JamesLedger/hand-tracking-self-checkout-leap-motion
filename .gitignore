@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Leap motion integration
+Assets/Plugins/LeapMotion
+
+# TextMeshPro
+Assets/TextMesh Pro

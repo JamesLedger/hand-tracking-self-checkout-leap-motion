@@ -36,7 +36,7 @@ public class KeyboardCommands : MonoBehaviour
     public int textCounter = 0;
     public string[] productNameList;
     public float[] productPriceList;
-    public int productCounbter;
+    public int productCounter;
     public float totalPrice;
 
     Tiles currentTile;
@@ -46,7 +46,7 @@ public class KeyboardCommands : MonoBehaviour
     void Start()
     {
         xOffset = 180;
-        productCounbter = 0;
+        productCounter = 0;
 
         productNameList = new string[] { "12 Eggs", "Self Raising Flour", "Olive Oil", "Granny Smith", "White Zinfandel"};
         productPriceList = new float[] { 1.00f, 0.70f, 3.00f, 1.20f, 10f,  };
@@ -54,85 +54,37 @@ public class KeyboardCommands : MonoBehaviour
         AgeWarning.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        switch (currentTile)
-        {
-            case Tiles.Welcome:
-                WelcomeManager();
-                break;
-            case Tiles.MainList:
-                break;
-            case Tiles.Verification_Scan:
-                break;
-            case Tiles.Verification_Selection:
-                break;
-            case Tiles.Product_Selection:
-                break;
-            case Tiles.Product_fruit:
-                break;
-            case Tiles.Product_Fruit_Apple:
-                break;
-            case Tiles.Payment_Methods:
-                break;
-            case Tiles.Payment_Scan:
-                break;
-            case Tiles.ThankYou:
-                break;
-            default:
-                break;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Camera.transform.position += new Vector3(xOffset, 0, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Camera.transform.position += new Vector3(-1 * xOffset, 0, 0);
-        }
-    }
-
     public void WelcomeManager()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (productCounbter < 5)
+            if (productCounter < 5)
             {
                 TextMeshPro priceList = GameObject.Find("ProductPrices").GetComponent<TextMeshPro>();
                 TextMeshPro nameList = GameObject.Find("ProductNames").GetComponent<TextMeshPro>();
-                priceList.text += productPriceList[productCounbter].ToString("c2") + "\n";
-                nameList.text += productNameList[productCounbter] + "\n";
+                priceList.text += productPriceList[productCounter].ToString("c2") + "\n";
+                nameList.text += productNameList[productCounter] + "\n";
 
                 TextMeshPro lastPrice = GameObject.Find("LastPrice").GetComponent<TextMeshPro>();
                 TextMeshPro lastName = GameObject.Find("LastName").GetComponent<TextMeshPro>();
-                lastPrice.text = productPriceList[productCounbter].ToString("c2");
-                lastName.text = productNameList[productCounbter];
+                lastPrice.text = productPriceList[productCounter].ToString("c2");
+                lastName.text = productNameList[productCounter];
 
                 TextMeshPro totalPriceText = GameObject.Find("TotalPrice").GetComponent<TextMeshPro>();
-                totalPrice += productPriceList[productCounbter];
+                totalPrice += productPriceList[productCounter];
                 totalPriceText.text = totalPrice.ToString("c2");
 
-                if (productCounbter == 4)
+                if (productCounter == 4)
                 {
                     AgeWarning.SetActive(true);
                 }
             }
 
-            if (productCounbter == 5)
+            if (productCounter == 5)
             {
                 AgeWarning.SetActive(false);
             }
-            productCounbter++;
+            productCounter++;
         }
-    }
-
-    public void MainListManager()
-    {
-
     }
 }

@@ -24,7 +24,7 @@ public class Pointer : MonoBehaviour
         Vector3 fingerTipPos = fingerTip.transform.position;
         Vector3 fingerBasePos = fingerBase.transform.position;
 
-        Vector3 offset = (fingerTip.transform.position + new Vector3(0,0,3f));
+        Vector3 offset = (fingerTip.transform.position + new Vector3(0,0,1f));
         
 
         pointerObject.transform.position = offset;
